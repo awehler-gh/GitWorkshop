@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-22T05:25:21+02:00
+
+====== 3.Commit ======
+Created Thursday 22 October 2015
+
+===== About =====
+	* A **commit** object is a **reference** to an existing **tree object**.
+	* It describes a repository **snapshot** or **revision** at a specific point in time.
+	* Commits manage **history** with a **linked list** of commits.
+	* The **sha1 name** of a **commit** **object** is calculated from its **commit contents** including **meta data**:
+		* **sha1** of the **root tree** object referencing the **snapshot**.
+		* **list** of parent commits **sha1** keys.
+			# **Note**, there may be:
+			# **0 parent** in case of the **very first** commit to an empty fresh repository,
+			# **1 parent** in case of a typical **commit**,
+			# **2 parents** in case of a **typical** **merge commit** and 
+			# **3 or more parents** in case of a **multiple parents merge commit**.
+		* **author** and **change** timestamp (could be an email with a patch).
+		* **committer** and **commit** timestamp (person who finally did the commit).
+		* **commit** **message **(description).
+	* **[GitBook]** p. 11
+
+
+===== Show commit storage contents =====
+'''
+$ git show --no-patch --pretty=raw 2be7fcb476
+commit 2be7fcb4764f2dbcee52635b91fedb1b3dcf7ab4
+tree fb3a8bdd0ceddd019615af4d57a53f43d8cee2bf
+parent 257a84d9d02e90447b149af58b271c19405edb6a
+author Dave Watson <dwatson@mimvista.com> 1187576872 -0400
+committer Junio C Hamano <gitster@pobox.com> 1187591163 -0700
+Fix misspelling of 'suppress' in docs
+Signed-off-by: Junio C Hamano <gitster@pobox.com>
+#..
+'''
+
+
+===== Snapshot, object model example =====
+	* **[GibBook]** p14
+		# If we had a simple **project example** with the following **2 directories** and **3 files** structure
+		# and if we committed this to a Git repository, it would be represented like this:
+
+	{{./pasted_image001.png?height=160}}
+
+	{{./pasted_image.png?height=450}}
+

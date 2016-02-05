@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-12T14:56:59+02:00
+
+====== 2.Tree ======
+Created Monday 12 October 2015
+
+===== About =====
+	* A **tree object** is equal to some **(sub-) directory** entry in a file system.
+	* The **sha1 name** of a **tree object** is calculated from its **tree contents** including **meta data**:
+		* There is a **list** of items for **files** and **directories** with these attributes:
+			* item **type**
+				* files and symlinks: 	item type=**blob**
+				* directories: 			item type=**tree**
+			* **file name**, only the plain name of a file or directory
+			* **blob: mode**, UNIX **permissions** 
+				* ''100644'', ''100755'':	regular **file **or** directory**, executable (only **executable** bit matters)
+				.			**Note**: files all have mode ''644'' or ''755''
+				.			git actually only pays attention to the **executable** bit.
+				* ''120000'':	**symlink**, blob contents is the destination path to file or directory
+				.			**Note**: symlinks may be **invalid**, dangling
+				.			**Note**: symlinks may be **not supported** by git on **Windows**
+				. http://stackoverflow.com/questions/954560/how-does-git-handle-symbolic-links
+		* This list is sorted by name.
+	* The git tree definition is **recursive**.
+	* A git tree object represents a **single directory tree**.
+	* **Identical trees**
+		Since trees and blobs, like all other objects, are named by the SHA1 hash of their contents, two trees have the same SHA1 name **if and only if** their contents **(including, recursively, the contents of all subdirectories)** are identical. 
+		This allows git to **quickly** determine the **differences** between two related tree objects, since it can ignore any entries with identical object names.
+	* **[GitBook]** p. 10
+
+
+
+
+
+
+
+

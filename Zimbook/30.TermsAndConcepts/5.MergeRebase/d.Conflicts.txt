@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-23T08:55:41+01:00
+
+====== d.Conflicts ======
+Created Saturday 23 January 2016
+
+===== Fix merge conflicts =====
+	* http://stackoverflow.com/questions/161813/fix-merge-conflicts-in-git
+	* http://weblog.masukomi.org/2008/07/12/handling-and-avoiding-conflicts-in-git/
+
+===== Create new branches when resolving conflicts =====
+	* http://dont-be-afraid-to-commit.readthedocs.org/en/latest/git/conflicts.html
+	* It's very **sensible** not to merge into a branch containing **valuable work** to avoid dozens of conflicts making your files a mess.
+	* Remember, **branches** are **cheap** and **disposable**. Create a new one specially for the purpose of discovering what sort of conflicts arise, and to give you a sandbox to work on resolving them without disturbing your work so far.
+	* You might have conflicts across dozens of files, if you were unlucky, so it's very important to be able to get out gracefully and at the very least leave things as they were.
+	* Hint for **beginners**: you might also like to experiment and analyze in a **sandbox** with **fetching**, **merging** and **rebasing** as will, but **without pushes**. For this just repeatedly copy your real repository into a sandbox and work there:
+		''cp -a your-path/RealRepo /tmp/Sandbox''
+
+
+==== Resolve using mine ====
+	* https://lostechies.com/joshuaflanagan/2010/01/29/how-to-resolve-a-binary-file-conflict-with-git/
+	* The file in your working copy is still the copy from your current branch - in other words, it was not modified by the merge attempt. To resolve the conflict and keep this file, just stage and commit it:
+'''
+git add somefile.dll 
+git commit –m "My commit message for the merge"
+'''
+
+
+==== Resolve using theirs ====
+	* If you prefer to resolve this conflict using their copy, you need to get the file from the branch you were trying to merge in. Just check it out explicitely, stage and commit it:
+'''
+git checkout otherbranch somefile.dll
+git checkout --theirs -- somefile.dll   # equivalent shortcut
+git add somefile.dll
+git commit –m "My commit message for the merge"
+'''
+
+	* Note that in place of ''otherbranch'', you can use any **tree-ish** that refers to a branch: a local branch name (''otherbranch''), a remote branch name (''origin/master''), a specific commit SHA (''980e3cc''), etc. For example, if you were merging in from your remote when you received the conflict, and you wanted to resolve using the remote version, you would retrieve that copy of the file using:
+		''git checkout origin/master somefile.dll''  
+	* Also, you can pump in any version of the file prepared anywhere, stage and commit it.

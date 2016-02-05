@@ -1,0 +1,94 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-20T12:50:17+02:00
+
+====== 2.IndexStage ======
+Created Tuesday 20 October 2015
+
+===== About =====
+	* The **Index** or **Stage** is your proposed next commit.
+	* Other **synonymous** names for index concept:
+		# Staging area	 	# as this is what **Git looks at** at next commit.
+		# Staged files
+		# Cache
+		# Directory cache
+		# Current directory cache
+	* The git index has **three important purposes** **[GitBook]** p. 120:
+		**I) Prepare commit**
+		The index holds **all** the information necessary to generate a complete, single, uniquely determined **tree object**. Therefore the index knows about 
+			a) the current checkout and
+			b) the list of changed files that are going to be committed.
+		Running ''git commit'' generates this **tree object** from the **index** and stores it in the **object database**.
+		
+		**II) Cache for speed optimization**
+		The index enables **fast comparisons** between the tree object it defines and the working tree.
+			It does this by storing some **additional** file system **data** for each entry, such as the **last modified time**. 
+			This data is **not stored** in the created tree object, but it can be used to determine **quickly** which files in the working directory **differ** from what was stored in the index, and thus **save git** from having to **read** all of the data from such files to look for **changes**.
+		
+		**III) Merge support**
+		The index can efficiently represent information about merge conflicts between different tree objects, allowing each pathname to be associated with sufficient information about the trees involved that you can create a **three-way merge** between them.
+			During a **merge**, the index can store __multiple versions of a single file__, called **stages**. The third column in the ''git ls-files -stage'' output is the stage number, and will take on values other than 0 for files with merge conflicts.
+	* If you **blow away the index** entirely, you generally **haven't lost** any information as long as you  have the **sha name** of the **tree** that it described **[GitBook]** p. 18.
+	* Thus the **index** is a sort of **temporary staging area**.
+
+===== What is new in the index? =====
+	**git status**
+		* The easiest way to see what is **new** in the index is with the ''git status'' command. It reports 
+			a) which files are **staged**; these are changes to be committed
+			b) which files are **modified** but not yet staged and 
+			c) which files are **untracked**. **[GitBook]** p. 17; this means, yet unknown to git.
+	**git ls-files**
+		* This command lists **all files** known to git within the **current checkout**  (**HEAD**), thus not only modified files, **starting** at the **current working directory**.
+
+===== Add to index =====
+	**git add README**
+		* Copy the contents of the README file to the **git object store** and store its contents as a **blob**.
+		* Record in the git index: **Filename** README and the **hash** of the README blob in the object store.
+			# Therefore the README file is now also remembered as being **tracked** in the sense of **known** to git or **managed** by git.
+
+
+===== Commit index =====
+	**git commit**
+		* Take the files that are referred to in the "git index" and save them to the git repository.
+			1. Create a **tree object** in the git object store for **all files** and **directories** in the git index.
+			2. Create a **commit object** in the object store including e.g. **author**, **message** and **timestamp** among others.
+			3. **Connect** the commit object as **child commit** to the actual **parent commit**.
+			4. **Connect** the commit object to the new created **tree object**.
+
+===== Details of git index =====
+	* http://schacon.github.io/gitbook/7_the_git_index.html	# **[GitBook]** p. 120
+	* The index is a **binary file** ''.git/index'' 
+	* containing a **sorted list of path names** to **blobs**, 
+	* each with **permissions** and the **SHA1** of a blob object
+	* The **contents** of the **index** can be shown with:
+
+	{{./pasted_image001.png?height=175}}
+
+
+===== Relations =====
+	{{./GitDataFlow.2.svg}}
+
+	* A **local repository** in general is stored within a ''.git'' directory.
+		# A local repository is **complete**, it has **everything needed** and may be **cloned**.
+		# **HEAD** = short form of **Local repository**, current checked out branch
+	* A **checkout** gives you files from the **local repository** into the **Working Directory**.
+		# The **HEAD** reference corresponds to the **currently checked out branch**.
+		# It is adjusted accordingly.
+		# The **Index** is also concerned, it **always** holds the complete **list of files** 
+		# needed to build a complete **snapshot tree** for some **commit**.
+	* You may **mark** a **subset** of new, deleted or modified **files** in the Working directory to be committed via **add**. Those files then are said to be **staged**.
+	* A **commit** finally brings **staged** files from the **Index** into the **local repository**.
+
+===== Three types of differences =====
+	
+{{./GitDataDiff.svg}}
+	* **Diff types:**
+		* **Working dir** 	visa **Index**:	# ''git diff'' 
+		* **Working dir** 	visa **HEAD**:	# ''git diff HEAD'' 
+		* **Index** 			visa **HEAD:**	# ''git diff --cached'' 
+	
+	* **Convenient** other** options** to ''git diff'':
+		''--name-status''
+			Show only names and status of changed files.
+		''--name-only''
+			Show only names of changed files.

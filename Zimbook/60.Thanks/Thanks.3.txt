@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-18T07:53:28+01:00
+
+====== Thanks.3 ======
+Created Monday 18 January 2016
+
+	{{/Icons/ThanksForWatching.1.svg?width=350}}
+
+{{../../00.Agenda/GitEssentialsWorkshop.3.svg?width=500}}
+
+===== End of video 3: Git Terms and Concepts =====
+	* **You are invited** to attend the follow-up **Video 4: Hands-on, Proof of Concepts**
+
+{{../../00.Agenda/GitEssentialsWorkshop.4.svg?width=500}}
+{{../../00.Agenda/Agenda.svg?width=500}}
+	**Video 1: Introduction**
+		[*] [[10.Intro]] ''.......................'' What to expect, introduction
+		[*] [[15.References]] ''.................'' Where to look for more
+
+	**Video 2: Git Objects**
+		[*] [[20.GitObjects]] ''..................'' Bottom up
+
+	**Video 3: Git Terms and Concepts**
+		[ ] [[30.TermsAndConcepts]] ''..........'' Git terminology
+	
+	{{/Icons/jean-victor-balin-icon-arrow-right-blue.svg?width=16}} **Video 4: Hands-on, Proof of Concepts**
+		[ ] [[40.HandsOn]] ''...................'' Does it work? Proof of concepts
+
+
+
+
+
+
+
+
+
+
+
+
+
+

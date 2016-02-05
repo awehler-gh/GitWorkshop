@@ -1,0 +1,68 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-29T14:01:15+01:00
+
+====== 1.Setup ======
+Created Thursday 29 October 2015
+
+===== Environment =====
+'''
+# ===== Space for temporary work, repositories
+# think about any place     # e.g.    /tmp
+export GitBares=/virt/HandsOn      # bare    repositories
+export GitWorks=/virt/HandsOn      # working repositories
+#..
+'''
+
+
+===== Git version =====
+'''
+# ===== check available git version
+git --version
+'''
+	{{./Out.3.svg}}
+
+
+===== Local git man pages =====
+'''
+# ===== check access to git man pages
+man git
+#..
+'''
+
+
+===== Local git html pages =====
+	* file:///usr/share/doc/git-doc/user-manual.html	# Link into local file-system
+	* file:///usr/share/doc/git-doc/index.html		# Entry point; browse it
+
+'''
+# ===== check available html files (Ubuntu package: git-doc)
+firefox /usr/share/doc/git-doc/user-manual.html    # user manual
+firefox /usr/share/doc/git-doc/index.html          # man pages
+
+# ===== we talk about 150 commands
+ls /usr/share/doc/git-doc/git-*html  |  wc
+'''
+	{{./Out.4.svg}}
+
+
+===== Global config =====
+'''
+# ===== Invite myself
+git config --global user.name  "Andreas Wehler"
+git config --global user.email "winwin@eclipso.at"
+
+# ===== set default tools
+git config --global core.editor emacs   # my default editor
+git config --global merge.tool  meld    # my default merge tool
+
+# ===== review config file
+cat ~/.gitconfig
+'''
+	{{./Out.1.svg}}
+
+'''
+# ===== check results
+git config --global --list
+'''
+	{{./Out.2.svg}}

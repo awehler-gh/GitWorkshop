@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-12-15T16:42:30+01:00
+
+====== d.Fetch ======
+Created Tuesday 15 December 2015
+
+===== About =====
+	* **[HackGuide]** __Fetching__, **[GitPro]** p.106
+	* The ''git fetch'' command is fairly simple. 
+		* It takes the **name** of a **remote repository** (unless used with the --all flag, which fetches all remotes)
+		* and retrieves **any new references** and **all objects** necessary to complete them,
+		* **moving** the corresponding local pointers, e.g. ''origin/master'', to their **new**, more up-to-date position.
+	* **Note**: fetch refers to a **remote repository** (or all configured remotes, with option ''-all''), not just a **branch**.
+
+
+===== Essential facts =====
+	  {{./pasted_image.png?height=75}}
+	* The **fetch** parameter here specifies a mapping of ''<remote-refs>:<local-refs>''. 
+	* The example above simply states 
+		* that the references found in **origin**’s ''refs/heads/*''  
+		* should be stored **locally** in ''refs/remotes/origin/*'' (local snapshot of remote repository).
+	* **[Vogel]** The ''git fetch'' command **only** updates the **remote-tracking branches** (local snapshot copy of branches stored in a remote repository) and **none** of the **local branches** ...
+	* ... and it does **not change** the **working tree** of the Git repository. 
+	* Therefore, you can run the ''git fetch'' command at **any point** in time, having checked out any branch without any side effects.
+	* **Remember: remote** branches are **local  # **http://stevebennett.me/2014/02/26/git-what-they-didnt-tell-you/
+		I have very frequently fallen into this trap:
+			''$ git diff origin/master'' 
+		No differences, so my branch must be **in sync** with ''origin'', **right**? **Wrong**. 
+		What is true is my branch is **in sync **with the** local copy **of ''origin''.
+		If you don’t run ''git fetch'', then git will **never** even **update** its local copies.
+	* After **reviewing** the **changes** in the remote tracking branch you can **merge** the changes into your local branches or **rebase** your local branches onto the remote-tracking branch.
+	* Alternatively you can also use the ''git cherry-pick commit_id'' command to take over only selected commits. 

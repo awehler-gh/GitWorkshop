@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-09T12:22:15+02:00
+
+====== 10.Intro ======
+Created Friday 09 October 2015
+
+===== Why bother to learn git? =====
+	* This question has been answered by gitguys as follows:
+		http://www.gitguys.com
+	* **Improvement.**
+		Git is a big improvement over legacy version control systems.
+	* **Importance.**
+		Because of its benefits git grows in popularity.
+	* **Save time.**
+		Skills help to save time and trouble with git managed source code.
+
+
+===== Bad news =====
+	* **Git is different, may confuse.**
+		* Git is built differently from the ground up (data storage).
+			# Consequently, if you __only__ learn and compare __recipes__ **git visa svn** you might still get confused about what git command to use when.
+		* Distributed git has many aspects that other centralized SCMs don't. Likewise things may go wrong you never saw before.
+		* It really is worthwhile to learn the 'git philosophy' and what it can do for you.
+	* **Needs effort.**
+		# It takes some effort to learn the ways and whys of git.
+
+
+===== This Workshop: Bottom-Up =====
+	* **Conceivable approach: Top-Down**
+		* If you need **quick results** with git you probably want to focus on **use cases and recipes**.
+		* You may want to compare with other Version Control Systems (VCS):
+			* The **Use-Case-X** could be solved with some **VCS-Y** this way ...
+			* In **Git** you have to do ...
+	* **Complementary approach: Bottom-Up** 
+		* In contrast this workshop takes a Bottom-Up approach. The idea is to provide help for an **understanding** of **how git works** by explanation of essential git design elements in detail.
+		* **Personally** I always need **comprehension** for some **long term benefit**. For me it is difficult to remember recipes for use cases without insight.
+		* All the more I cannot **resolve problems** that arise from missing or misunderstanding of the basics.
+		* This workshop may well serve as **good preparation** for tinkering with other** git training material** out there that cover many use cases, recipes and work-flows.
+ 

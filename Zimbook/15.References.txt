@@ -1,0 +1,102 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-07T13:55:53+02:00
+
+====== 15.References ======
+Created Wednesday 07 October 2015
+
+===== This screencast on Github =====
+'''
+git clone https://github.com/awehler-gh/GitWorkshop /tmp/GitWorkshop
+cat /tmp/GitWorkshop/README
+#..
+'''
+
+
+===== Distributed local docs =====
+	* [[file:///usr/share/doc/git-doc/index.html|man git]]			# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/index.html&width=16}} git - the stupid content tracker
+	.					# file:///usr/share/doc/git-doc/index.html
+	* [[file:///usr/share/doc/git-doc/gitglossary.html|man gitglossary]]		# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/gitglossary.html&width=16}} **Git Glossary**, terms are explained with other locally linked terms
+	* [[file:///usr/share/doc/git-doc/git-subtree.html|man git-subtree]]		# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/git-subtree.html&width=16}} Merge subtrees together and split repository into subtrees
+	.					# file:///usr/share/doc/git-doc/git-subtree.html
+	* [[file:///usr/share/doc/git-doc/user-manual.html|man git user-manual]]	# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/user-manual.html&width=16}} Git User Manual
+	.					# file:///usr/share/doc/git-doc/user-manual.html
+	* **Online version**:
+		* https://www.kernel.org/pub/software/scm/git/docs/user-manual.html
+
+===== [GitPro] Pro Git =====
+		{{./pasted_image.png?height=120}}	# A git reference; 
+	* **Pro Git**; by Scott Chacon; **2nd ed. 2014 Edition**; ''ISBN-13: 978-1484200773''  
+	* http://git-scm.com/book/en/v2		# Free offline version for download
+		# {{/Icons/hdd.3.svg?href=./progit-en.848.pdf&width=16}} **Pro Git**; local snapshot
+		# **Subtitle**: Everything you need to know about git
+		# **574 pages**; example reference: **[GitPro]** p.574
+	* http://git-scm.com/documentation	# online version
+		# {{./pasted_image002.png?height=30}} 		Official Git - Documentation
+
+
+===== [GitBook] Git Community Book =====
+	* http://schacon.github.io/gitbook/		
+		# {{/Icons/hdd.3.svg?href=./GitBook.pdf&width=16}} **Git Community Book**; pdf download
+		# **Subtitle:** The open Git resource pulled together by the whole community
+		# Aim: Learn Git as quickly and easily as possible.
+		# **156 pages**; # Example reference: **[GitBook]** p. 156
+
+
+===== [HackGuide] A Hacker's Guide to Git =====
+	* http://wildlyinaccurate.com/a-hackers-guide-to-git/	
+		# **Good blog** where quite an amount of material is **copied** from.
+
+
+===== Git Cheat Sheet =====
+	* http://ndpsoftware.com/git-cheatsheet.html
+		# interactive, pure online resource
+		# **Very interesting**; a visit pays.
+
+
+===== [Vogel] Git - Tutorial =====
+	* http://www.vogella.com/articles/Git/article.html
+		# Professional trainer
+		# Good mature tutorial and git guide
+		# Many use cases, good structure
+		# **Recommendation**: Good follow up material after this workshop.
+
+
+===== Linus Torvalds; 10 years git =====
+	* **Interview** with Linus Torvalds, **10 Years of git** 
+	* http://linux.slashdot.org/story/15/04/06/1559207/10-years-of-git-an-interview-with-linus-torvalds
+	* http://www.linux.com/news/featured-blogs/185-jennifer-cloer/821541-10-years-of-git-an-interview-with-git-creator-linus-torvalds
+
+===== Tons of material out there =====
+	* Google  ''"git"''					# __212.000.000 hits__ 
+
+===== Used tools to create this screencast =====
+	.{{/Icons/BeginInput.png}}		# {{/Icons/BeginInput.png}}
+	* http://zim-wiki.org				# {{/Icons/zim.svg?width=32}} **zim**; 	A Desktop Wiki
+	.								#			The most important daily tool for me
+	.{{/Icons/BeginInput.png}}		# {{/Icons/BeginInput.png}}
+	* https://inkscape.org/en			# {{/Icons/inkscape.svg?width=32}} **inkcape**; vector graphics editor
+	* http://shutter-project.org			# {{/Icons/shutter.png}} **shutter**; a feature-rich screenshot program
+	* http://www.maartenbaert.be/simplescreenrecorder
+	.								# {{/Icons/simplescreenrecorder.svg?width=32}} **SimpleScreenRecorder**; guess
+	* http://www.videolan.org/vlc/		# {{/Icons/vlc.png?width=32}} **vlc**; Media player
+	* http://www.openshot.org			# {{/Icons/openshot.svg?width=32}} **openshot**; Video Editor
+	* http://wiki.audacityteam.org/wiki/Audacity_Wiki_Home_Page
+	.								# {{/Icons/audacity.svg?width=32}} **audacity**; sound editor
+	* http://ffmpeg.org					# {{/Icons/ffmpeg.png?width=32}} **ffmpeg**;audio/video converter
+	* http://xubuntu.org				# {{/Icons/ubuntu-logo.svg?width=32}} Xubuntu 14.04; Linux, Xfce
+	* https://support.mozilla.org/en-US	# {{/Icons/firefox.png?width=32}} **firefox**; Web browser
+	* https://openclipart.org				# {{./pasted_image001.png?width=32}} **openclipart:** All Clipart are Public Domain.
+
+
+===== Thanks =====
+	* This project has been privately worked out.
+	* Thanks is given to God, my wife, our youngsters (missing time) and encouraging work mates.
+
+===== Contact =====
+	* https://www.linkedin.com/pub/andreas-wehler/52/a49/208/
+	* winwin@eclipso.at
+
+===== What's next =====
+	[[60.Thanks:Thanks.1]]
+

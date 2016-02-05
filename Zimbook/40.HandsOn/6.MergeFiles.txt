@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-17T22:03:16+01:00
+
+====== 6.MergeFiles ======
+Created Tuesday 17 November 2015
+
+===== About =====
+	* Branch master holds files:	f1, f2, f3, f4
+	* Branch A holds files: 		f3, f4
+	* Branch B holds files:		f1, f2, f3, f4, f5, f6, f7
+	* Merge A into B:			# ..
+	* Merge B into A:			# ..
+
+===== Create branches =====
+	* [[+Commands]]
+
+===== Merge A1 to B1 =====
+'''
+# ===== merge A1 to B1
+git checkout B1
+git merge A1 -m "Message is: merge A1 to B1"
+git ls-files
+'''
+	{{./Out.16.05.svg}}
+	{{./Concept.16.01.svg?height=176}}
+	{{./pasted_image.png?height=250}}	{{./pasted_image001.png?width=320}}
+
+===== Merge B2 to A2 =====
+'''
+# ===== merge B2 to A2
+git checkout A2
+git merge B2 -m "Message is: merge B2 to A2"
+git ls-files
+'''
+	{{./Out.16.04.svg}}
+	{{./Concept.16.02.svg?height=175}}
+
+
+===== General notes =====
+**Checkout A; merge branch B**
+	* ''git checkout A'' 
+	* ''git merge B''    # this does mean: **merge B into A** 
+	* We get:
+		* All of A
+		* plus	(files added to B **after** the common ancestors commit)
+		* minus	(files deleted from B **after** the common ancestors commit)
+	* A git merge incorporates the effect of all **changes **from the named **commits** (most often: heads of branches) into the current branch **HEAD**, one after the other, since the time their common histories diverged from the current branch. It does __not__ just take into account the list of files and their contents at the __tips__ of the listed branches.
+	* It is possible to merge the commits of multiple branches, resulting in multiple parents.
+		# ''git merge Branch.1 Branch.2 Branch.3'' ...  # called: __Octopus strategy__ 
+	* A merge downstream, before ancestors commit: is **not** possible
+		* If B is downstream from A
+		* we get: Already up-to-date.

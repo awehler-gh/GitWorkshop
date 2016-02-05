@@ -1,0 +1,102 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-11T16:44:21+01:00
+
+====== 4.CreateBranch ======
+Created Wednesday 11 November 2015
+
+===== About =====
+	* file:///usr/share/doc/git-doc/git-branch.html
+
+===== Reminder: branches are references to commits =====
+'''
+# ===== show last commit of the master branch
+cd $GitWorks/usr1
+cat .git/refs/heads/master | cut -b -6
+#..
+'''
+	{{./Out.14.01.svg}}
+
+===== Create a branch =====
+'''
+# ===== create branch, observe changes
+touch ThisTimeStamp
+git   branch b.one
+find  . -newer ThisTimeStamp -type f
+'''
+	{{./Out.14.03.svg}}
+'''
+# ===== analysis
+ls -al .git/refs/heads/*
+cat    .git/refs/heads/*
+'''
+	{{./Out.14.02.svg}}
+	{{./Repo.14.1.svg}}
+
+==== Notes ====
+	* Creating a **branch** is just adding a reference.
+	* The other way round is also true: **Any commit object** may be the target of a branch reference.
+	* The **head** of a branch is the **reference** that points to the last **commit object** of that branch.
+	* There is __one single__ **symbolic reference**, ''.git/HEAD'', called **HEAD**, that points to the head of the current **checked out** branch.
+	* The just created new branch ''b.one'' is not checked out yet. We still are on master.
+
+===== HEAD indicates last checkout =====
+'''
+# ===== verify: we still are on master
+cat .git/HEAD
+'''
+	{{./Out.14.04.svg}}
+'''
+# ===== check out new branch
+git checkout b.one
+'''
+	{{./Out.14.05.svg}}
+'''
+# ===== verify: we now are on b.one
+cat .git/HEAD
+'''
+	{{./Out.14.06.svg}}
+	{{./Repo.14.2.svg}}
+
+===== New branch data and commit =====
+'''
+# ===== changes and commit on new branch
+echo "usr1; Step 14; base.txt; line 3" >> base-1.txt
+git add .
+git commit -m "Step 14, on branch b.one"
+'''
+
+==== Analysis ====
+'''
+# ===== get the sha1 of the head in current branch
+git log --pretty=oneline --abbrev-commit --decorate
+'''
+	{{./Out.14.07.svg}}
+'''
+# ===== get commit object
+git show -s --pretty=raw HEAD
+git show -s --pretty=raw b.one    # same output
+git show -s --pretty=raw 14cb45   # same output
+'''
+	{{./Out.14.08.svg}}
+
+==== Note ====
+	* There are several ways to name some needed reference.
+
+==== Root tree object ====
+'''
+# ===== Get the root tree contents
+git ls-tree 6356c8
+'''
+	{{./Out.14.09.svg}}
+'''
+# ===== Get blob size
+git cat-file -s 689b4a
+'''
+	{{./Out.14.10.svg}}
+	
+==== Overview ====
+	{{./Repo.14.3.svg}}
+
+==== Note ====
+	* Branches are references to commits

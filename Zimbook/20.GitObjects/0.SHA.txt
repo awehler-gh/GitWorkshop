@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-12T15:06:16+02:00
+
+====== 0.SHA ======
+Created Monday 12 October 2015
+
+===== About =====
+	* All the information needed to represent the **history** of a project is stored in:
+		# files referenced by a 
+		# 40-digit "**object name**" that looks something like this: 
+	'''
+	 	6ff87c4664981e4397625791c8ea3bbb5f2279a3
+	'''
+		# stored in the git repository as:
+	'''
+		.git/objects/6f/f87c4664981e4397625791c8ea3bbb5f2279a3
+	'''
+	* The **SHA1** hash is a cryptographic hash function.
+		# 160 **bit** checksum;  40 hexadecimal **digits**;  20 **bytes** 
+		# It is **virtually impossible** to find two different objects with the **same name** anywhere on the world.
+	* Git commands accept a **leading substring** of few **unique** digits. So, in fact names are short.
+	* Git can **quickly determine** whether two objects are **identical** or not, just by comparing names.
+	* Since object names are computed the same way in **every repository**, the **same content** stored in two repositories will always be stored under the **same name**.
+	* Git can **detect errors** when it reads an object, by checking that the object's name is still the SHA1 hash of its contents.
+	* Git repositories give are very high **security** level; no undetected fake of data contents is possible.
+	* Linux binary to compute sha1 checksum:	''/usr/bin/sha1sum'' 
+	* **[GitBook]** p. 7
+
+
+===== Git objects =====
+	* Every object consists of three things:
+		* **type**
+		* **size** and 
+		* **content**. 
+	* The size is simply the **size of the contents**, the contents depend on what **type** of object it is. There are object types:
+		* A **blob** is used to store file data - it is generally a file.
+		* A **tree** is basically like a directory - it references a bunch of other trees and/or blobs (i.e. files and sub-directories).
+		* A **commit** points to a __single tree__, marking it as what the project looked like at a certain point in time. It contains meta-information about that point in time, such as a timestamp, the author of the changes since the last commit, a pointer to the previous commit(s), etc.
+		* A **tag** is a way to mark a specific commit as special in some way. It is normally used to tag **certain commits** as specific releases or something along those lines.
+	* Almost all of Git is built around manipulating this simple structure of **four different object types**. It is sort of its own **little file-system** that sits on top of your machine's file-system.
+
+===== Different from SVN =====
+	* It is important to note that this is **very different** from most SCM systems that you may be familiar with. Subversion, CVS, Perforce, Mercurial and the like all use **Delta Storage** systems - they store the differences between one commit and the next. Git does not do this - it stores a **snapshot** of what all the files in your project look like in this tree structure **each time you commit**. 
+	* This is a **very important concept** to understand when using Git.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

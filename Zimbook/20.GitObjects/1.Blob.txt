@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-14T15:18:06+02:00
+
+====== 1.Blob ======
+Created Wednesday 14 October 2015
+
+===== About =====
+	* A **blob** object is nothing but a chunk of binary data. It stores the data **contents** of a **file** as  ''hello.c''.
+	* A blob will **never be changed**. It does exist or it does not.
+	* Blobs are stored by the **sha1** checksum of:
+		( (__git header__) plus (__file contents__) ).
+	* A **blob** doesn't refer to anything else nor has it attributes of any kind, **not even a file name**.
+	* Since the blob is entirely **defined by its data**, if any of two files in a directory **tree** or in multiple **different versions** of the repository have the same contents, 
+		''# ===== example, all files have the same contents:''
+		''./Makefile''
+		''./hello/Makefile''
+		''./doc/copy-of-example-makefile''
+	. 	then they will **share** the **same blob object**.
+	* The blob object is totally **independent** of its **location** in the directory tree. Also, changing a file **name** does not change the blob object that the **content** of the file is associated with.
+	* Git is a **content-addressable filesystem**. Great. What does that mean? It means that 
+		* At the core of Git is a simple **key-value** data store you 
+		* can **insert** any kind of **content** (value) into it, and it will
+		* **return** a **key** that you can use to **retrieve** the content again at any time.
+
+===== Blob attributes =====
+	{{./Objects.svg?width=640}}
+
+===== Get blob contents by its sha =====
+'''
+# ===== cat contents to stdout
+git show d67046
+This is the README file.
+#..
+'''
+
+===== Git blob creation =====
+	* A blob has **no file name**. The real file name (e.g. ''hello.c'') is stored in tree objects.
+	* The normal way to create a GIT blob object is:  ''git add file'' 
+	* We **can** create an **anonymous** blob this way:
+'''
+# ===== create 2 anonymous blobs
+echo 'test content'             | git hash-object -w --stdin
+d670460b4b4aece5915caf5c68d12f560a9fe3e4
+echo "This is the README file." | git hash-object -w --stdin
+bccdfbd6314e19a21c367ba5ea9cbe65a1a0818e
+#..
+'''
+
+===== Git objects storage =====
+'''
+# ===== find blobs
+find .git/objects
+.git/objects
+.git/objects/d6
+.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
+.git/objects/bc
+.git/objects/bc/cdfbd6314e19a21c367ba5ea9cbe65a1a0818e
+#..
+'''
+
+===== Git blob storage contents =====
+'''
+# ===== analyze contents
+cd .git/objects/d6
+python
+Python 2.7.6 (default, Jun 22 2015, 17:58:13) 
+[GCC 4.8.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> fd = open("70460b4b4aece5915caf5c68d12f560a9fe3e4", "rb")
+>>> line = fd.read()
+>>> import zlib
+>>> zlib.decompress(line)
+'blob 13\x00test content\n'
+>>> 
+#..
+'''
+

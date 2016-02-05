@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-26T15:57:23+01:00
+
+====== c.Cloning ======
+Created Thursday 26 November 2015
+
+===== About =====
+	* **[HackGuide]** __Cloning__ 
+	* The git clone command is really just a **shortcut** which does a few things for you. With its default configuration, it will:
+		* **Create** remote-tracking branches for each branch in the remote.
+		* **Check out** the branch which is **currently active** (''HEAD'') on the remote.
+		* Perform a git **pull** to bring the current branch and working tree up-to-date with the remote.
+	* The command ''git clone'' takes a **URL** and supports a number of transport protocols including HTTP, SSH, and Git’s own protocol. It also supports plain old file paths, which is what we'll use.
+
+	{{./pasted_image.png}}
+
+
+	{{./pasted_image001.png}}
+
+	* First, it contains a **remote listing** for ''origin'', which is the **default name** given to a repository's main remote. This tells Git the **URL** of the **repository**, and which references it should retrieve when performing a ''git fetch''.
+	* Below that is a **branch listing**. This is the configuration for a **remote-tracking branch**. 
+
+===== Refspec =====
+	* Explanation of the **refspec:**
+		file:///usr/share/doc/git-doc/git-fetch.html	# original docs, see also: **[GitPro]** p.501
+		{{./Refspec.svg?height=200}}
+
+
+
+
+
+
+
+
+
+
+

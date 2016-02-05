@@ -1,0 +1,66 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-21T21:31:12+01:00
+
+====== Commands ======
+Created Saturday 21 November 2015
+
+===== Branch master =====
+'''
+# ===== Branch master
+# cd [some_empty_directory]   # begin from start
+git init                      # create repository
+
+{
+  echo "Easy.txt on master."
+  echo "Shared 11"
+  echo "Shared 12"
+} | tee easy.txt
+{
+  echo "Conflict.txt on master."
+  echo "Shared A and B 11"
+  echo "Shared A and B 12"
+} | tee conflict.txt
+git add .
+git commit -a -m "Created easy.txt and conflict.txt on master"
+
+# ===== Branches A1, A2
+# loop: branches A1, A2 are equal
+for BRANCH in A1 A2 ; do
+  # ===== add data to files
+  git checkout -b $BRANCH master
+  {
+    echo "Only A line 1"
+    echo "Only A line 2"
+  } | tee -a easy.txt
+  git add .
+  git commit -m "Added data on $BRANCH, easy.txt"
+  
+  {
+    echo "Conflict: Edited on A line 1"
+    echo "Conflict: Edited on A line 2"
+    echo "Some other text line 100"
+    echo "Some other text line 101"
+  } | tee -a conflict.txt
+  git add .
+  git commit -m "Added data on $BRANCH, conflict.txt"
+done
+
+# ===== Branches B1, B2
+for BRANCH in B1 B2 ; do
+  # ===== add data to files
+  git checkout -b $BRANCH master
+  echo "We don't change easy.txt on B to avoid a conflict"
+  
+  {
+    echo "Conflict: Edited on B line 1"
+    echo "Conflict: Edited on B line 2"
+    echo "Some other text line 100"
+    echo "Some other text line 101"
+  } | tee -a conflict.txt
+  git add .
+  git commit -m "Added data on $BRANCH, conflict.txt"
+done
+#..
+'''
+

@@ -1,0 +1,85 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-20T05:04:11+01:00
+
+====== a.Remotes ======
+Created Wednesday 20 January 2016
+
+===== About =====
+	* **Remotes** are remote repositories, addressed by **URLs**.
+	* They normally are configured with **short names** like **origin**, just for convenience.
+	* **Remotes** typically are **bare repositories**, which have no **Working Directory** and no **Index** by definition.
+	* You cannot run ''git add'' or ''git commit'' within a **bare** repository.
+	* Instead, it is used as **shared** git **server**, where data is **pushed to** or **fetched from**.
+	* By **convention** a bare repository name has the extension ''.git'',   e.g.:
+'''
+	app.git
+	edu.git
+	doc.git
+'''
+
+
+===== Relations =====
+	{{./Remotes.01.svg}}
+
+
+===== Essential facts =====
+	* **Remotes** are **mirrored** locally by ''fetch'' and therefore by ''pull = fetch + merge.''
+		# http://longair.net/blog/2009/04/16/git-fetch-and-merge/
+		''# .git/refs/heads/   [for local    branches]''	# local branches, only known here
+		''# .git/refs/remotes/ [for tracking branches]''  	# __these mirrored__ **branches are also local (!)**
+		# **Both types** of branches are **very similar** in some respects – they're all just stored **locally** as single **SHA1** sums representing a **commit**. 
+		I emphasize __locally__ since some people see ''origin/master'' and assume that in some sense this branch is incomplete without access to the remote server – **that isn't the case**.
+		# **Despite** this similarity there is one particularly **important difference**:
+		The safe ways to change **remote-tracking branches** are with ''git fetch'' or as a **side-effect** of ''git push''.
+		You __can't work__ on remote-tracking branches __directly__.
+		In **contrast**, you can always **create** a local branch **based** on a remote-tracking branch and create **new commits** there.
+	* So what you mostly do with **remote-tracking branches** [awehler: or __remote snapshots__, read-only __snapshots of remotes__] is one of the following:
+		* **Update** 	them with ''git fetch'' and ''git push'' as side effect.
+		* **Merge** 	from them into your current branch.
+		* **Create** 	new local branches based on them.
+
+
+===== Git data flow, remotes =====
+	{{./GitDataFlow.3.svg}}
+
+
+
+
+===== Git access, available network protocols =====
+'''
+# ===== local file system (disk, NFS, sshfs ...)
+git clone src-path/gitbook.git dst-path/gitbook
+
+# ===== git protocol (Port 9148)
+# clone online repository
+git clone git://github.com/vogella/gitbook.git
+
+# ===== ssh protocol
+git clone ssh://git@github.com/vogella/gitbook.git
+# older syntax
+git clone git@github.com:vogella/gitbook.git
+
+# ===== http protocol
+git clone http://github.com/vogella/gitbook.git 
+
+# ===== http proxy, via environment vars
+export http_proxy=http://proxy:8080
+export https_proxy=https://proxy:8443 
+git clone http://git.eclipse.org/gitroot/platform/eclipse.platform.ui.git
+
+# ===== http proxy, via git configs
+# set proxy for git globally
+git config --global http.proxy http://proxy:8080
+
+# check the proxy settings
+git config --get http.proxy
+
+# revoke the proxy settings
+git config --global --unset http.proxy
+
+# ===== change the local name for the snapshot of a remote repository
+git remote rename github_http github_testing 
+#..
+'''
+

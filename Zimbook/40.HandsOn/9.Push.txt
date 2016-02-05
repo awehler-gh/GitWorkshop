@@ -1,0 +1,82 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-04T17:58:48+01:00
+
+====== 9.Push ======
+Created Monday 04 January 2016
+
+
+===== About =====
+	* Push studies to different repositories
+		a) push branch study.1 to Repo bare1.git; as branch a/b/study.6 
+		b) push branch study.2 to Repo bare1.git; as branch study.7 
+		c) push branch study.2 to Repo bare2.git; as branch master 
+
+	{{./Fig.21.01.svg}}
+
+
+===== Repository preparations =====
+	* [[+CreateRepos]]
+
+===== Push all =====
+'''
+# ===== push all
+GitBares=/virt/HandsOn
+GitWorks=/virt/HandsOn
+
+cd $GitWorks/usr1       # repo from where to push
+git checkout master     # current branch is not involved, has no effect
+
+git push --tags $GitBares/bare1.git  study.1:a/b/study.6
+git push --tags $GitBares/bare1.git  study.2:study.7
+git push --tags $GitBares/bare2.git  study.2:master
+
+# git push RepoRemote  BranchLocal:BranchRemote
+#          RepoRemote    # whereto, remote destination repository
+#          BranchLocal   # what,    local  source branch
+#          BranchRemote  # whereto, remote destination branch
+#..
+'''
+
+
+===== Check results =====
+	* [[file:///usr/share/doc/git-doc/git-ls-remote.html|man git ls-remote]] 	# List branches and tags available in a **(local or) remote** repository.
+	* **Note**: 				# ''git ls-remote'' works __anywhere__, for **any repo** and  __outside__ of **any repo**
+	* http://stackoverflow.com/questions/15472107/when-listing-git-ls-remote-why-theres-after-the-tag-name
+		# article about why annotated tags are **listed twice**, with and without an **appended** "''^{}''".
+		# Annotated tags have their own sha tag object, which refer to some commit.
+		# the commit and the tag object (with appended ''^{}'') are listed.
+		# you may want to grep the pattern ''^{}'' away.
+
+
+==== List branches and tags ====
+'''
+# ===== List branches
+GitBares=/virt/HandsOn
+GitWorks=/virt/HandsOn
+
+cd /tmp       # works anywhere
+git ls-remote $GitBares/bare1.git | grep -v {}
+'''
+	{{./Out.21.07.svg}}
+'''
+git ls-remote $GitBares/bare2.git | grep -v {}
+#..
+'''
+	{{./Out.21.08.svg}}
+
+
+==== ls-remote works also locally ====
+	* The command ''git ls-remote'' works for any repository.
+	* You may want to verify your own studies on local repositories also with this method.
+
+===== Notes =====
+	* If some existing remote branch is updated, there must be a **shared history**. This **may fail**.
+	* If some new branch is pushed which does not exist on the remote, it will be created. This **never fails**.
+	* For __testing different syntax variants__ you may push many new branches to remote.
+	* And, you always can delete remote branches when you are done.
+	* Push variants, show them, study them
+		# http://www.kernel.org/pub/software/scm/git/docs/git-push.html#_examples
+
+===== Done =====
+	[[60.Thanks:Thanks.4]]

@@ -1,0 +1,12 @@
+[Notebook]
+version=0.4
+name=GitWorkshop
+interwiki=
+home=00.Agenda
+icon=None
+document_root=/tmp/GitWorkshop
+shared=False
+endofline=unix
+disable_trash=True
+profile=
+

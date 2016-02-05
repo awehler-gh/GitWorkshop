@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-22T20:32:41+01:00
+
+====== 8.Fetch ======
+Created Friday 22 January 2016
+
+===== About =====
+	* Fetch some branch from remote repository into a local branch with **different name**
+
+===== Fetch recipe =====
+'''
+# ===== fetch directly
+
+# ===== --dry-run, no operation
+git fetch $GitBares/RepoA.git --dry-run sub1/sub2/study.101:susi.101
+
+# ===== ok
+git fetch $GitBares/RepoA.git           sub1/sub2/study.101:susi.101
+git branch -a
+git co susi.101
+git ls-files -s
+#..
+'''

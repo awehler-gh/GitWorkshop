@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-12T14:05:25+01:00
+
+{{./Workshop.svg?width=500}}
+
+{{./Agenda.svg?width=500}}
+	**Video 1: Introduction**
+		[ ] [[10.Intro]] ''.......................'' What to expect, introduction
+		[ ] [[15.References]] ''.................''  Where to look for more
+
+	**Video 2: Git Objects**
+		[ ] [[20.GitObjects]] ''..................'' Bottom up
+
+	**Video 3: Git Terms and Concepts**
+		[ ] [[30.TermsAndConcepts]] ''..........''   Git terminology
+	
+	**Video 4: Hands-on, Proof of Concepts**
+		[ ] [[40.HandsOn]] ''...................'' Does it work? Proof of concepts
+
+
+
+

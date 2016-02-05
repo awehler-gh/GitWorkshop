@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-28T10:25:23+01:00
+
+====== 6.Remotes ======
+Created Wednesday 28 October 2015	# [[6.Remotes]]
+
+===== References =====
+	* http://longair.net/blog/2009/04/16/git-fetch-and-merge/
+
+
+===== Contents =====
+	[[+a.Remotes]]
+	[[+b.CreateBare]]
+	[[+c.Cloning]]
+	[[+d.Fetch]]
+	[[+e.Pull]]
+	[[+f.Push]]

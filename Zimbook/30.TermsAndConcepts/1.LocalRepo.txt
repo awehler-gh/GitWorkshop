@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-23T13:51:33+02:00
+
+====== 1.LocalRepo ======
+Created Friday 23 October 2015
+
+===== About =====
+	* Snapshots, not differences **[GitPro]** p. 32
+		# The **major difference** between Git and any other VCS is the way Git thinks about its data. Conceptually, **most other systems** store information as a **list of file-based** **changes**. These systems, e.g. CVS, Subversion, Perforce, Bazaar, think of the information they keep as a set of files and the changes made to each file over time.
+		# Git instead thinks of its data like a set of snapshots of a **miniature filesystem**. Every time you commit it basically takes a picture of what **all your files** look like at **that moment** and stores a reference to that snapshot. To be efficient, if files have **not changed**, Git doesn't store the file again, just a **link** to the previous **identical file** it has already stored.
+	* Filesystem plus tools
+		# This is an **important distinction** between Git and nearly all other VCSs. It makes Git **reconsider** almost every aspect of other version control systems. This makes Git more like a mini filesystem with some incredibly **powerful tools** built on top of it, rather than simply a VCS.
+	* Nearly every operation is on the **local disk**; enjoy on air plane or train.
+	* **Git has integrity.** Everything check-summed before it is stored and is then **referred** to by that **checksum**. It's impossible to change the contents of any file or directory without Git knowing about it. This functionality is built into Git at the **lowest levels** and is integral to its philosophy. You can't lose information in transit or get file corruption without Git being able to detect it.
+
+
+===== Other VCS: store differences =====
+	{{./OtherVcs.svg}}
+
+
+
+===== Git: store snapshots of whole filesystem =====
+	{{./Snapshot.svg}}
+

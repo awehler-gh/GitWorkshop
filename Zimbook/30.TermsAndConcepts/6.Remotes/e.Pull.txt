@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-12-15T16:59:52+01:00
+
+====== e.Pull ======
+Created Tuesday 15 December 2015
+
+===== About =====
+	* **[HackGuide]** Pulling, **[GitPro]** p.113
+	* The ''git pull'' command is, like ''git clone'', a nice **shortcut** which essentially just runs a few lower-level commands. 
+		* With the **format** ''git pull <remote> <branch>'', the git pull command does the following:
+		* Runs ''git fetch <remote>''.
+		* Reads ''.git/FETCH_HEAD'' to **figure out** if ''<branch>'' has a **remote-tracking branch** which should be merged.
+			__Background__: With every ''git fetch'' git stores information about the list of all **fetched branches** in **.git/FETCH_HEAD**. This is referred to as a **short-lived reference**, because it gets overridden every time you run git fetch.
+		* Runs ''git merge'' if required, otherwise quits with an appropriate message.
+	* **[GitPro]** p.113; We know now that ''git fetch'' will not modify your **working directory** at all. It will simply get the data for you and let you merge it yourself. 
+	* Generally it’s __better__ to simply use the **fetch **and** merge** commands __explicitly__ as the magic of **git pull** can often be confusing.
+
+===== Note: current branch =====
+	* Git **pull** will **always merge** into the **current branch**. 
+		You select which **source branch** you want to pull from, and it pulls it into the current branch. 
+		Also, the  **from branch** can be **local or remote**.
+		http://stackoverflow.com/questions/3329943/git-branch-fork-fetch-merge-rebase-and-clone-what-are-the-differences/9204499#9204499

@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-13T13:18:00+02:00
+
+====== 40.HandsOn ======
+Created Tuesday 13 October 2015
+
+
+===== Remark =====
+	* In git there often are several alternatives to get some wanted result.
+	* Please regard the chosen commands just as examples for a proof of concept.
+
+===== Contents =====
+	[[+1.Setup]]
+	[[+2.CreateRepo]]
+	[[+3.AddData]]
+	[[+4.CreateBranch]]
+	[[+5.Tags]]
+	[[+6.MergeFiles]]
+	[[+7.MergeContents]]
+	[[+8.Fetch]]
+	[[+9.Push]]
+
+
+

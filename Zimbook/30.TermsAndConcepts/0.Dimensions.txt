@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-12-21T09:07:08+01:00
+
+====== 0.Dimensions ======
+Created Monday 21 December 2015
+
+===== About Ordering Dimensions =====
+	* **Directories**: 	**Order** by **contents** and context. File system.
+	.				Think about ships, air planes, trucks.
+	.				Think about __directory trees__ with subdirectories.
+	* **Branches**: 		**Order** by **variants** of same contents. Changes.
+	.				Think about types of trucks.
+	.				Think about __repository trees__ with branches and subbranches.
+	* **History**: 		**Order** by **time**. Tags. Milestones.
+	.				Compare trucks of 10 years ago with today.
+
+
+===== Two tree concepts to be kept apart =====
+	**Note**:
+	This is **valid** for **any** Version Control System (**VCS**), not just for git.
+
+
+==== Tree of directories ====
+	* If there is **need** of new, different **contents**, create new **directories**
+		# or even a new repository.
+	'''
+	$>tree
+	.
+	|-- README
+	`-- lib
+	|-- inc
+	|
+	`-- tricks.rb
+	`-- mylib.rb
+	2 directories, 3 files
+	'''
+
+
+==== Tree of branches, repository tree ====
+	* If there is **need** of some new **variant** of existing content, create a **branch**.
+	{{./pasted_image.png?width=540}}
+	* **[GitPro]** p.101, FIGURE 3-19, A “silo” view of progressive-stability branching
+

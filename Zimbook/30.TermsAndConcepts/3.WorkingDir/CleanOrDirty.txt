@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-23T08:54:43+02:00
+
+====== CleanOrDirty ======
+Created Friday 23 October 2015
+
+===== About =====
+	* When is a working directory dirty?
+	* The truth is needed at stashing.
+		http://git-scm.com/book/en/v1/Git-Tools-Stashing
+
+
+===== Definition 1 (somewhat wrong) =====
+	* https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html#def_dirty
+		# A working tree is said to be **dirty** if it contains modifications which have not been committed to the current branch.
+
+
+===== Definition 2 (more wrong) =====
+	* http://www.gitguys.com/topics/glossary/
+		# **Dirty working directory**
+		# If files have been updated in the working directory after they were updated in the index then the working directory is considered **dirty**. The working directory is **clean** if all modified files in the working directory have been added to the index.
+
+
+===== Solution, summary =====
+	* http://stackoverflow.com/questions/20642980/does-git-dirty-mean-files-not-staged-or-not-committed-glossary-conflict
+	* It is reasonable to ask **separately:**
+		a) whether the __index__ is clean, meaning there is nothing staged for commit and/or
+		b) the __working tree__ is clean, meaning unchanged with respect to __index__ and/or
+		c) the __working tree__ is clean, meaning unchanged with respect to the __last commit__ (HEAD).
+	* After all your __working tree__ is **clean** if 
+		a) there are no changes with respect to the **last commit** (HEAD) and
+		b) there also are no changes with respect to the **index**.
+	* What ''git status'' tells you is both:
+		# the answer to "what, if anything, is staged for commit" and 
+		# "what, if anything, is different between the working tree and the index". 

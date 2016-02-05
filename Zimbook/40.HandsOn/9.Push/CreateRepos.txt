@@ -1,0 +1,70 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-06T22:41:17+01:00
+
+====== CreateRepos ======
+Created Wednesday 06 January 2016
+
+===== Init repositories =====
+'''
+# ===== Init repositories
+GitBares=/virt/HandsOn
+GitWorks=/virt/HandsOn
+
+git init --bare $GitBares/bare1.git
+git init --bare $GitBares/bare2.git
+git init        $GitWorks/usr1
+#..
+'''
+
+
+===== Repo usr1, master =====
+'''
+# ===== Create dummy master
+cd $GitWorks/usr1
+# git checkout master         # there is no master yet
+F=dummy.txt
+echo "This is a dummy file on master" | tee $F
+git add $F
+git commit -m "Added file $F to master"
+#..
+'''
+
+
+===== Repo usr1, study.1 =====
+'''
+# ===== Create branch study.1
+cd $GitWorks/usr1
+git checkout -b study.1 master     # create study.1 on master and checkout
+for ii in f11 f12 f13 ; do
+  echo "This is file $ii on study.1" | tee $ii
+  git add $ii
+  git commit -m "Added file $ii to study.1"
+done
+git ls-files
+#..
+'''
+
+
+===== Repo usr1, study.2 =====
+'''
+# ===== Create branch study.2
+cd $GitWorks/usr1
+git checkout -b study.2 master     # create study.2 on master and checkout
+for ii in f21 f22 ; do
+  echo "This is file $ii on study.2" | tee -a $ii
+  git add $ii
+  git commit -m "Added file $ii to study.2"
+done
+
+# ===== Example for a tag
+git tag -a -m "Add a tag for f22" "Tag.f22"
+
+# ===== Continue with other commits
+for ii in f23 f24 ; do
+  echo "This is file $ii on study.2" | tee -a $ii
+  git add $ii
+  git commit -m "Added file $ii to study.2"
+done
+#..
+'''

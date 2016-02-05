@@ -1,0 +1,176 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-29T14:01:02+01:00
+
+====== 2.CreateRepo ======
+Created Thursday 29 October 2015
+
+===== About =====
+	* Create a simple real repository
+	* Analyze its elements
+	* Understand the structure of a git repository
+
+===== Setup =====
+'''
+# ===== environment
+export GitWorks=/virt/HandsOn      # working repositories
+#..
+'''
+
+
+===== Create repo with empty dir =====
+	* file:///usr/share/doc/git-doc/git-init.html		# man git init
+'''
+# ===== create first repo usr1
+git init $GitWorks/usr1
+cd       $GitWorks/usr1
+mkdir    data               # create an empty directory
+git      status
+'''
+	{{./Out.01.svg}}
+
+
+==== Good practice ====
+	* Create **at least** 1 empty file, e.g.  ''.gitignore'', that may be filled in or used later.
+	* Or consider why at all you want to have an empty directory in the repository.
+
+===== Create an empty file =====
+'''
+# ===== create empty file
+touch $GitWorks/usr1/data/.gitignore
+git status
+'''
+	{{./Out.02.svg}}
+
+
+==== Notes ====
+	* Directory ''data'' is no more empty, it holds an **untracked empty** file at least.
+	* Git still ignores it as expected, until we ''git add'' it to the **index** in the next step.
+
+===== Add to index =====
+'''
+# ===== add all files to the index of the Git repository
+git add .
+git status
+'''
+	{{./Out.03.svg}}
+
+
+==== Browse objects ====
+'''
+# ===== browse objects
+find .git/objects -type f
+'''
+	{{./Out.05.svg}}
+'''
+# ===== list files of current branch in index, starting at cwd
+git ls-files -s
+'''
+	{{./Out.06.svg}}
+	{{./Repo.1.svg}}
+
+
+==== Notes ====
+	* The **blob** object is already created with ''git add''.
+	* This has happened **before** any comit.
+	* **Blob lifetime:** __Even__ if you __unstage__ any added files __before commit__ (e.g. with ''git rm --cached data/.gitignore'') the data blob itself is **not removed**. It becomes a **dangling object** that  eventually will be removed with the git garbage collector ''git gc''.
+	* ''git ls-files'' lists cached **full paths** of **files**, not paths of **directories**.
+	* The **index** holds **all files** of the **current branch**, not only changes to be committed to the repository. Therefore ''git ls-files -s ''gives you the real **complete tree** of tracked files in the current branch.
+
+===== Commit =====
+'''
+# ===== First commit
+git commit -m "12.CreateRepo commit"
+'''
+	{{./Out.07.svg}}
+'''
+# ==== Check status
+git status
+'''
+	{{./Out.09.svg}}
+
+
+==== Notes ====
+	* **After** ''git commit'' the list of files in ''git ls-files'' is **unchanged** (see: above). Why?
+	* You can **delete** the index and nothing is lost. 
+		# ''rm .git/index'' 
+		# A **missing** index will be **rebuilt** as needed.
+		# See: [[30.TermsAndConcepts:2.IndexStage]]
+
+
+==== Browse objects ====
+'''
+# ===== browse all object files in this repository
+cd $GitWorks/usr1
+find .git/objects -type f
+'''
+	{{./Out.08.svg}}
+'''
+# ===== short listing, example
+cd $GitWorks/usr1/.git/objects
+find ?? -type f | sort | tr -d '/' | cut -c 1-7
+'''
+	{{./Out.12.svg}}
+'''
+# ===== list files in the current branch, they are in the index
+git ls-files -s
+'''
+	{{./Out.06.svg}}
+
+
+===== Where am I? Step by step. =====
+	* There is only 1 file, data/.gitignore, but there are 4 git objects
+'''
+# ===== Where is the current HEAD?
+cd $GitWorks/usr1
+cat .git/HEAD
+'''
+	{{./Out.04.svg}}
+'''
+# ===== What's the commit object of this branch, the master?
+cat .git/refs/heads/master
+'''
+	{{./Out.11.svg}}
+'''
+# ===== Check all in one command
+git branch -v
+'''
+	{{./Out.10.svg}}
+
+
+==== Analyze commit object ====
+'''
+# ===== Analysis: Start with commit object
+git show -s --pretty=raw 5449a0a
+'''
+	{{./Out.13.svg}}
+
+
+==== Lookup root tree object ====
+'''
+# ===== Get the root tree contents
+git ls-tree b58842
+'''
+	{{./Out.14.svg}}
+
+
+==== Note ====
+	* The root tree object normally holds many **files** to be listed with their **names** (not: paths).
+	* Here, we just have only one subdirectory **name** ''data'' with the object type tree.
+
+==== Tree object "data" with blob ====
+'''
+# ===== Get the next tree contents
+git ls-tree 82e3a7
+'''
+	{{./Out.15.svg}}
+
+
+===== Overview, diagram =====
+'''
+# ===== Listing
+find data
+'''
+	{{./Repo.2.svg}}
+
+	* **That much **for one empty file...

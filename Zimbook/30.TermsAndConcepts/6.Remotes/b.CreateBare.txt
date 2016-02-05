@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-27T05:58:14+01:00
+
+====== b.CreateBare ======
+Created Friday 27 November 2015
+
+===== Create a bare repository =====
+	{{./pasted_image.png}}
+	* **[HackGuide]** __Remotes__
+	* Notice how rather than creating a ''.git'' directory for the repository, ''git init --bare'' simply treats the current directory as the ''.git'' directory.
+	* There's really not much to this repository. The only interesting things it contains are a ''HEAD'' reference which points to the ''master'' branch (which doesn't exist yet), and a config file which has the bare flag set to true. The other files aren't of much interest to us.
+
+===== Variant =====
+'''
+# ===== create a new bare repository /tmp/kuckuck.git
+git init --bare /tmp/kuckuck.git
+#..
+'''
+
+	{{/Icons/Warning.1.svg?height=24&type=None}} **Caution**
+	* {{/Icons/led-green.gif}} If this directory does **not exist**, it is **created**. Good.
+	* {{/Icons/led-yellow.gif}} If this directory **exists** and contains **ordinary** files and directories, you are **not warned** about this fact, existent files are just **retained**. This is probably **not what you want**, after all a bare repository does not have a Working Directory.
+	* {{/Icons/led-red.gif}} If this directory **exists** and contains a valid **local git repository**, it nevertheless just is initialized with the result of a **nested repository**, what ever that means.
+	* {{/Icons/led-green.gif}} If this directory **exists** and contains a valid **git bare repository**, say a repository of the same type, it also is re-initialized, but this is safe as mentioned by the documentation.
+		# http://stackoverflow.com/questions/19033468/re-initialize-a-bare-git-repository
+		# http://stackoverflow.com/questions/19397888/how-to-undo-misoperation-of-reinitialized-existing-git-repository
+		# http://git-scm.com/docs/git-init
+		# file:///usr/share/doc/git-doc/git-init.html	#  {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/git-init.html&width=16}}
+			# Running git init in an existing repository is **safe**. It will not overwrite things that are already there. The primary reason for rerunning git init is to pick up newly added **templates** (or to move the repository to another place if --separate-git-dir is given).
+
+
+

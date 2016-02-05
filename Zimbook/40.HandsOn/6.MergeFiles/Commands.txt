@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-22T20:16:28+01:00
+
+====== Commands ======
+Created Sunday 22 November 2015
+
+===== Branch master =====
+'''
+# ===== Create files
+# cd [some_empty_diretory]    # begin from start
+git init                      # create repository
+# git checkout master         # there is no master yet
+for ii in f1 f2 f3 f4 ; do
+  echo "This is file $ii" | tee $ii
+  git add $ii
+  git commit -m "Added file $ii to master"
+done
+git ls-files
+'''
+	{{./Out.16.01.svg}}
+
+===== Branch A1 =====
+'''
+# ===== Remove files
+git checkout -b A1 master     # create A1 on master and checkout
+for ii in f1 f2 ; do
+  git rm $ii
+  git commit -m "Removed file $ii from A1"
+done
+git ls-files
+'''
+	{{./Out.16.02.svg}}
+
+===== Branch A2 (same as A1) =====
+'''
+# ===== Remove files
+git checkout -b A2 master     # create A2 on master and checkout
+for ii in f1 f2 ; do
+  git rm $ii
+  git commit -m "Removed file $ii from A2"
+done
+git ls-files
+'''
+	{{./Out.16.02.svg}}
+
+===== Branch B1 =====
+'''
+# ===== Add files
+git checkout -b B1 master
+for ii in f5 f6 f7 ; do
+  echo "This is file $ii" | tee $ii
+  git add $ii
+  git commit -m "Added file $ii to B1"
+done
+git ls-files
+'''
+	{{./Out.16.03.svg}}
+
+===== Branch B2 (same as B1) =====
+'''
+# ===== Add files
+git checkout -b B2 master
+for ii in f5 f6 f7 ; do
+  echo "This is file $ii" | tee $ii
+  git add $ii
+  git commit -m "Added file $ii to B2"
+done
+git ls-files
+'''
+	{{./Out.16.03.svg}}

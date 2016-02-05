@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-14T13:56:45+01:00
+
+====== 5.Tags ======
+Created Saturday 14 November 2015
+
+===== Create tags =====
+	* Git knows about a **lightweight tag**, its just a static reference to some commit.
+	* More useful and mostly used is an **annotated tag**, that is represented by an own git object.
+	* Annotated tags contain additional metadata.
+	* Any object may be tagged (blob, tree, commit), but mostly used are commits.
+
+'''
+# ===== create a lightweight tag
+git tag Commit.1 5449a0           # default commit if not specified: HEAD
+
+# ===== create an annotated tag
+git tag -a -m "Explanation for this tag." Step.14  # any ref spec will do
+git log --pretty=oneline --all --abbrev-commit --decorate
+'''
+	{{./Out.15.02.svg}}
+
+
+===== List tags with sha1 hashes =====
+	* file:///usr/share/doc/git-doc/git-show-ref.html
+'''
+# ===== list available tags
+git show-ref --tags --dereference
+'''
+	{{./Out.15.04.svg}}
+
+
+===== Delete a tag =====
+'''
+# ===== delete a tag
+git tag --delete Step.14      # delete tag "Step.14"
+'''
+	{{./Out.15.05.svg}}
+'''
+# ===== list remaining tags
+git show-ref --tags --dereference
+'''
+	{{./Out.15.06.svg}}

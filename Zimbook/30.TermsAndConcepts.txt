@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-20T05:33:51+02:00
+
+====== 30.TermsAndConcepts ======
+Created Tuesday 20 October 2015
+
+===== Preliminary Remarks =====
+	[[+0.Dimensions]]
+
+
+===== Key Subjects =====
+	[[+1.LocalRepo]]
+	[[+2.IndexStage]]
+	[[+3.WorkingDir]]
+	[[+4.RefsBranches]]
+	[[+5.MergeRebase]]
+	[[+6.Remotes]]
+
+
+

@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-12T14:57:20+02:00
+
+====== 4.Tag ======
+Created Monday 12 October 2015
+
+===== About =====
+	* A **tag object** is a **pointer** to a **commit**.
+	* A tag gives a commit a **friendlier name** and remembers also a **message** and **timestamp**.
+	* The **sha1 name** of a **tag object** is calculated from its **tag contents** including **meta data**:
+		* **commit sha**, the **destination** where the tag points to.
+		* **tagger**, who created this tag.
+		* tag creation **timestamp**
+		* tag **message**
+	* **Note**: A tag is like a branch reference (about branches: see below) that **never moves**.
+
+
+===== Tag: no checkout =====
+	You can't really **checkout** a **tag** in Git, since it is fixed and there is no complementing checkin. 
+	If you want to put a version of your repository in your working directory that looks like a specific tag, you can create a **new branch** at a specific tag with
+'''
+# ===== git checkout -b [branchname] [tagname]
+$ git checkout -b version2  v2.0.0
+Switched to a new branch 'version2'
+#..
+'''
+	Of course if you do this and do a commit, your ''version2'' **branch** will differ from your v2.0.0 **tag** since it will move forward with your new changes as expected.
+	**[GitPro]** p. 78
+
+
+===== Lightweight tags =====
+	* Note that git tag can also be used to create **lightweight tags**, which are not tag objects at all, but just simple **references** whose names begin with **refs/tags/** 
+	**[GitBook]** p. 15
+
+
+===== What's next =====
+	[[60.Thanks:Thanks.2]]
+
+
+
+
+
+

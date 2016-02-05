@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-22T20:28:49+01:00
+
+====== c.Rebase ======
+Created Sunday 22 November 2015
+
+===== Rebase =====
+	* Rebase is a **shortcut** of the verbose cherry-picking ...
+	{{./pasted_image.png}}
+	* With the format ''git rebase <base> <target>'', the ''rebase'' command will take all of the commits from ''<target>'' and play them on top of ''<base>'' **one by one**. It does this without actually modifying ''<base>'', so the end result is a linear history in which ''<base>'' can be **fast-forwarded** to ''<target>''.
+	* __Pretend__ that ''<target>'' was actually branched from ''<base>''. Take all of the commits from ''<target>'' and pretend that they happened after ''<base>''.
+
+===== Variant of previous merge example =====
+	* How rebasing can **prevent** us from having to do a **non-fast-forward merge**.
+	{{./pasted_image001.png?width=510}}
+	* Run ''git rebase master feature-branch'' before performing the merge.
+		{{./pasted_image002.png}}
+	* This has brought ''feature-branch'' directly upstream of ''master''.
+	{{./pasted_image003.png?width=524}}
+	* Git is now able to perform a fast-forward merge.
+		{{./pasted_image004.png}}

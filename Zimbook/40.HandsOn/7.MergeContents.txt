@@ -1,0 +1,85 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-18T06:10:13+01:00
+
+====== 7.MergeContents ======
+Created Wednesday 18 November 2015
+
+===== About =====
+	* ''easy.txt'' 	# reference is master as the common ancestor
+		* lines **shared** on branches 	A and B
+		* lines **added** only on        	A
+	* ''conflict.txt'' 
+		* lines **shared** on branches A and B
+		* lines edited on A
+		* lines edited on B  # **conflict** because there are changes in the **same file** 
+	* Merge A into B:			# ..
+	* Merge B into A:			# ..
+
+===== Result (anticipated, see below) =====
+	{{./pasted_image.png}}		{{./pasted_image001.png?width=320}}
+
+
+===== Branches master, A1, A2, B1, B2 =====
+	* [[+Commands]]	# git commands	
+
+===== Merge A1 to B1 =====
+'''
+# ===== merge A1 to B1
+git checkout B1
+git merge A1 -m "Message is: merge A1 to B1"
+'''
+	{{./Out.17.01.svg}}
+
+
+==== easy.txt: Automatic merge ok. ====
+'''
+git show A1:easy.txt     | cat -n     # A1
+git show B1:easy.txt     | cat -n     # B1, before merge
+git show master:easy.txt | cat -n     # master
+
+'''
+	{{./Fig.17.01.svg}}
+
+
+==== conflict.txt: Must be resolved ====
+'''
+git show A1:conflict.txt     | cat -n     # Branch A1
+git show B1:conflict.txt     | cat -n     # Branch B1
+git show master:conflict.txt | cat -n     # Branch master
+cat -n conflict.txt                       # Worktree
+
+'''
+	{{./Fig.17.02.svg}}
+
+
+==== Resolve conflict, then commit ====
+	* Edit ''conflict.txt'' on the Worktree.
+	* ''git add conflict.txt'' 
+	* ''git commit -m "Message is: merge A1 to B1"'' 
+
+===== Merge B2 to A2 =====
+'''
+# ===== merge B2 to A2
+git checkout A2
+git merge B2 -m "Message is: merge B2 to A2"
+'''
+	{{./Out.17.01.svg}}
+
+
+===== easy.txt: Automatic merge ok. =====
+'''
+git show A2:easy.txt     | cat -n     # Branch A2
+git show B2:easy.txt     | cat -n     # Branch B2
+git show master:easy.txt | cat -n     # Branch master
+'''
+
+	{{./Fig.17.03.svg}}
+	* **Note**: Merging B2 to A2 gives the **same result** as merging A1 to B1.
+
+===== Conflict.txt: Must be resolved =====
+	* Same as above.
+
+===== Result =====
+	{{./pasted_image.png}}		{{./pasted_image001.png?width=320}}
+

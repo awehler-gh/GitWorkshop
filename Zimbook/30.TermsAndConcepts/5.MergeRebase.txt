@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-16T22:42:05+01:00
+
+====== 5.MergeRebase ======
+Created Saturday 16 January 2016
+
+===== References =====
+	* file:///usr/share/doc/git-doc/git-merge.html		# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/git-merge.html&width=16}} 
+	* file:///usr/share/doc/git-doc/git-cherry-pick.html	# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/git-cherry-pick.html&width=16}}
+	* file:///usr/share/doc/git-doc/git-rebase.html		# {{/Icons/hdd.3.svg?href=file:///usr/share/doc/git-doc/git-rebase.html&width=16}}
+	* http://wildlyinaccurate.com/a-hackers-guide-to-git/	
+		# **Good blog** where the material on this subject is taken from
+
+
+===== Contents =====
+	[[+a.Merging]]
+	[[+b.CherryPick]]
+	[[+c.Rebase]]
+	[[+d.Conflicts]]
+
+

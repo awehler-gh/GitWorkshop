@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-12T14:52:50+02:00
+
+====== 20.GitObjects ======
+Created Monday 12 October 2015
+
+===== SHA: Git Object Identification =====
+	[[+0.SHA]]
+
+
+===== Git Objects =====
+	[[+1.Blob]]
+	[[+2.Tree]]
+	[[+3.Commit]]
+	[[+4.Tag]]
+

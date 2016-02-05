@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-19T15:23:14+02:00
+
+====== 4.RefsBranches ======
+Created Monday 19 October 2015
+
+===== About =====
+	* **References** or in short **Refs** are **symbolic names** for git **commit objects**.
+	* A **reference** is stored in a **file** somewhere in ''.git/refs'', containing the **hash** of a **commit** **object**.
+	* All **Refs** are named with a slash-separated **path name** starting with ''refs/''.
+		# Examples:
+		# The **branch** ''test'' is short for ''refs/heads/test''.
+		# The **tag** ''v2.6.18'' is short for ''refs/tags/v2.6.18''.
+		# The **remote** ''origin/master'' is short for ''refs/remotes/origin/master''.
+		# The full name is occasionally useful if there is a name collision in different name spaces, 
+		# e.g. there ever exists a tag and a branch with the same name. 
+	* **Tags** are **constant symbols** that never change.
+	* **Branches** are **pointers** that advance with every commit. 
+	* Git **commands** could be used with an object's **hash**, like ''git show d409ca7'', but that would require to **remember** the hash of every object that is to be manipulated.
+		# Git references, or **refs**, save from having to **memorize** these hashes.
+
+
+===== Overview =====
+	* http://eagain.net/articles/git-for-computer-scientists/	
+		# Git for Computer Scientists
+		
+	{{./GitElements.svg}}
+
+
+===== HEAD =====
+	* [**GitPro**] p. 289
+	* **HEAD** is symbolic reference which points to the **current branch** reference, which is in turn a pointer to the last commit made on that branch.
+	* HEAD will be the parent of the next commit that is created.
+	* HEAD will also be the **current branch** on a clone of this repository.
+	* It's simplest to think of HEAD as the **snapshot** of your last commit.
+
+===== Show head =====
+	{{./pasted_image.png?height=150}}
+
+
+===== Show tree contents, snapshot =====
+	{{./pasted_image001.png?width=511}}
+
+
+===== Branches are refs to commits =====
+	* http://www.vogella.com/tutorials/Git/article.html
+	* A branch is a **named pointer** to a **commit**. 
+	* Selecting a branch in Git terminology is called to **checkout** a branch. 
+	* The creation of a new **commit** on the current branch **advances** this **pointer** to the newly created commit.
+	* Each **commit** knows its **parents** (predecessors). 
+	* You can create a **new branch** from an **existing** one and change the code independently from other branches. 
+	* One of the branches is the **default** (**typically** named **master**). The default branch is the one for which a local branch is automatically created when **cloning** the repository. 
+	* To create a branch there is **no need** for a **Working Tree**, it can be created on a bare repository.
+		# **Note**: You **cannot** create a **new branch** in an **empty** new repository. You need at least 1 commit, and the **very first commit** will trigger the creation of the **default branch** (e.g. **master**). 
+		# http://stackoverflow.com/questions/5678699/creating-branches-on-an-empty-project-in-git
+	* Branches shall be **related** to a **common trunk** (variants dimension).
+	* Unrelated branches shall one by one **establish** new different **repositories** (directories dimension).
+
+	{{./BranchesExample.svg}}
+
+	**[GitPro]** p. 86; The HEAD branch moves forward when a commit is made

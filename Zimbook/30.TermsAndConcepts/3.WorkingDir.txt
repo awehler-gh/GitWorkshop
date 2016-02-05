@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-20T13:47:21+02:00
+
+====== 3.WorkingDir ======
+Created Tuesday 20 October 2015
+
+===== About =====
+	* The Git **working directory** is the directory that holds the **current checkout** of the files and subdirectories, recursively. These files are ready to be worked on.
+		**[GitBook]** p. 17,  http://www.gitguys.com/topics/glossary#working
+	* The terms **working directory** and **working tree** are synonyms, they mean the same.
+	* **Tracked** files in the working directory are often **removed** or **replaced** by git as you **switch branches**.
+	* **Untracked** files are **ignored** by git, except they are mentioned with git status.
+		# Therefore, __untracked files__ are __not addressed__ with the term **working directory**.
+
+
+===== States of a file in working tree =====
+	* **untracked**
+		# git does know nothing about the file __name__ in working directory.
+	* **tracked**
+		# committed with history and not staged
+		# __contents__ for the named file in the working tree still matches the last commit
+	* **staged** (registered to be commited)
+		# git has registered a new or existing different **blob** for changed __contents__ 
+		# which has to be committed the next time.
+		# **Note: **Nothing is said about the current file __contents__ in the working tree.
+		# It is the previously **staged blob** that will go into the next commit even if
+		# another change happens later that would **need a new blob**.
+		# Any change that shall be committed must be added with ''git add''.
+	* **dirty** / modified
+		# the file __contents__ differs from HEAD or it differs from Stage.
+		# See discussion of **clean** or **dirty**: [[+CleanOrDirty]]
+
+
+===== Example =====
+	* **[GitPro]** p. 48
+	{{./Dirty.svg}}
+
+**Important:**
+	# ''CONTRIBUTING.md'' is listed as both **staged** and **unstaged**. How is that possible? 
+	It turns out that Git **stages** a file exactly as it is when you run the **git add** command. The staged version will be commited, even if the file has changed again in the meantime, which then is __not staged for commit__.
+
+
+===== Git status =====
+	{{./pasted_image.png?height=180}}
+
+
+===== Git short status =====
+	{{./ShortStatus.svg?height=160}}
+

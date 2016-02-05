@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-18T07:53:33+01:00
+
+====== Thanks.4 ======
+Created Monday 18 January 2016
+
+	{{/Icons/ThanksForWatching.1.svg?width=350}}
+
+{{../../00.Agenda/GitEssentialsWorkshop.4.svg?width=500}}
+
+===== End of video 4: Hands-on, Proof of Concepts =====
+	* **Thanks for attending.**
+	* Have fun and success with git!
+
+
+

@@ -1,0 +1,172 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-06T06:56:48+01:00
+
+====== 3.AddData ======
+Created Friday 06 November 2015
+
+===== Commands =====
+'''
+# ===== generate some data files
+export GitWorks=/virt/HandsOn      # working repositories
+cd $GitWorks/usr1
+
+touch data/empty.txt          # another empty file
+echo "usr1; Step 13; f1.txt;   line 1" >  data/f1.txt
+echo "usr1; Step 13; f1.txt;   line 2" >> data/f1.txt
+echo "usr1; Step 13; f1.txt;   line 3" >> data/f1.txt
+echo "usr1; Step 13; base.txt; line 1" >  data/base-2.txt
+echo "usr1; Step 13; base.txt; line 1" >  base-1.txt
+
+echo "usr1; Step 13; f2.txt; line 1"   >  data/f2.txt
+
+mkdir common
+echo "usr1; Step 13; same; line 1" > common/dito-1.txt
+echo "usr1; Step 13; same; line 1" > data/dito-2.txt
+
+# ===== commit data
+git add .
+git status
+git commit -m "Step 13"
+'''
+
+
+===== Git working directory =====
+'''
+# ===== get all files in our working directory
+cd $GitWorks/usr1
+git   ls-files -s | sort -k 4 ; \
+tree
+'''
+	{{./Out.13.01.svg}}
+
+
+===== Git repository analysis =====
+
+==== List objects ====
+'''
+# ===== get all objects of this repository
+cd $GitWorks/usr1/.git/objects
+find ?? -type f | sort
+'''
+	{{./Out.13.06a.svg}}
+'''
+# ===== shorten the output
+find ?? -type f | sort | tr -d '/' | cut -c 1-6
+'''
+	{{./Out.13.06.svg}}
+'''
+# ===== get the sha1 of the head in current branch
+git branch -v
+'''
+	{{./Out.13.02.svg}}
+'''
+# ===== get commit object
+git show -s --pretty=raw 7dd65c
+'''
+	{{./Out.13.03.svg}}
+
+
+==== Root tree object ====
+'''
+# ===== Get the root tree contents
+git ls-tree 6f1a30
+'''
+	{{./Out.13.04.svg}}
+'''
+# ===== Get blob content of base-1.txt
+git show 18f39c4
+'''
+	{{./Out.13.07.svg}}
+'''
+# ===== Get blob size, different ways
+git cat-file -s 18f39c4 ; \
+git show        18f39c4 | wc -c
+'''
+	{{./Out.13.08.svg}}
+
+
+==== Other tree objects ====
+'''
+# ===== Tree for directory "common"
+git ls-tree b3bc67
+'''
+	{{./Out.13.10.svg}}
+'''
+# ===== Tree for directory "data"
+git ls-tree 3903dd
+'''
+	{{./Out.13.05.svg}}
+
+
+==== Overview, whole repository now ====
+
+	{{./Repo.13.1.svg}}
+
+
+===== Re-used tree objects =====
+	* Tree objects are reused where possible.
+
+==== Change data ====
+'''
+# ===== change some data file
+echo "usr1; Step 13; base.txt; line 2" >> base-1.txt
+
+# ===== commit data
+git add .
+git status
+git commit -m "Step 13, change data"
+'''
+
+
+==== Repository re-analysis ====
+'''
+# ===== get all objects of this repository
+cd $GitWorks/usr1/.git/objects
+find ?? -type f | sort | tr -d '/' | cut -c 1-6
+'''
+	{{./Out.13.11.svg}}
+'''
+# ===== get the sha1 of the head in current branch
+git log --pretty=oneline --abbrev-commit --decorate
+'''
+	{{./Out.13.12.svg}}
+'''
+# ===== get commit object
+git show -s --pretty=raw 5e51ec
+'''
+	{{./Out.13.13.svg}}
+
+
+==== Root tree object ====
+'''
+# ===== Get the root tree contents
+git ls-tree 17daf4
+'''
+	{{./Out.13.14.svg}}
+'''
+# ===== Get blob size
+git cat-file -s 20b010
+'''
+	{{./Out.13.15.svg}}
+
+
+==== Other tree objects ====
+'''
+# ===== Get the common tree contents
+git ls-tree b3bc67
+'''
+	{{./Out.13.10.svg}}
+'''
+# ===== Get the data tree contents
+git ls-tree 3903dd
+'''
+	{{./Out.13.05.svg}}
+
+
+==== Overview, whole changed repository ====
+	{{./Repo.13.2.svg}}
+
+
+===== Note =====
+	* Think about reachability of git objects.
